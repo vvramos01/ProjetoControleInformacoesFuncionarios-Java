@@ -1,0 +1,68 @@
+\\Arquivo Funcionario
+public class Funcionario {
+private String nome;
+private double salario;
+private String funcao;
+public Funcionario(String nome, double salario) {
+this.nome = nome;
+this.salario = salario;
+this.funcao = "Funcionário Comum";
+}
+public Funcionario(String nome) {
+this(nome, 1000.0);
+}
+public String getNome() {
+return nome;
+}
+public void setNome(String nome) {
+this.nome = nome;
+}
+public double getSalario() {
+return salario;
+}
+public void setSalario(double salario) {
+this.salario = salario;
+}
+public String getFuncao() {
+return funcao;
+}
+public void setFuncao(String funcao) {
+this.funcao = funcao;
+}
+public String exibirInformacoes() {
+return "Nome: " + nome + "\nSalário: R$" + salario + "\nFunção: " + funcao;
+}
+}
+
+\\Arquivo Gerente
+public class Gerente extends Funcionario {
+private String departamento;
+public Gerente(String nome, double salario, String departamento) {
+super(nome, salario); this.departamento = departamento;
+}
+@Override
+public String exibirInformacoes() {
+return super.exibirInformacoes() + "\nDepartamento: " + departamento;
+}
+public String getDepartamento() {
+return departamento;
+}
+public void setDepartamento(String departamento) {
+this.departamento = departamento;
+}
+}
+
+\\Arquivo Main
+public class Main {
+public static void main(String[] args) {
+System.out.println("--- Dados do Funcionário Comum ---");
+Funcionario func1 = new Funcionario("João Silva", 3500.00);
+System.out.println(func1.exibirInformacoes());
+System.out.println("\n--- Dados do Funcionário sobrecarregado ---");
+Funcionario func2 = new Funcionario("Maria Santos");
+System.out.println(func2.exibirInformacoes());
+System.out.println("\n--- Dados do Gerente ---");
+Gerente gerente1 = new Gerente("Pedro Alvares", 7500.00, "Tecnologia");
+System.out.println(gerente1.exibirInformacoes());
+}
+}
